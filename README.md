@@ -23,6 +23,3 @@ I'll be posting weekly progress updates, sharing my learnings, challenges, and e
 
 Let's embark on this adventure together and unlock the mysteries of microprocessors! 🚀🔥
 
----
-
-Feel free to customize the description according to your progress, goals, and any specific topics you'll be focusing on. You can use this description to introduce visitors to your microprocessor learning repository on GitHub and give them a glimpse of what they can expect. Happy learning! 🌟
