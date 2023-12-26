@@ -27,7 +27,7 @@ main proc
         mov [di], al
         inc si
         inc di
-        loop back   
+        loop compare   
            
         mov ah, 09
         mov dx, offset string2
