@@ -1,53 +1,47 @@
-ORG 100h
+ORG 100H  
 
 .DATA
-    string   DB "hEllO $"
-    string2  DB 5 DUP(?), "$"
+    STR DB "BiLaL BabaYIgiT"
+    STR2 DB 15 DUP(?), '$'
 
 .CODE
 MAIN PROC
-    MOV AX, @DATA
+    MOV AX,@DATA
     MOV DS, AX
 
-    MOV SI, OFFSET string
-    MOV DI, OFFSET string2
+    MOV SI , OFFSET STR
+    MOV DI, OFFSET STR2
 
-    MOV CX, 5
+    MOV CX, 15
 
-COMPARE_LOOP:
-    MOV AL, [SI]
+COMPARE:
+    MOV AL, [SI] ; AL = 'B'
     CMP AL, 'A'
-    JL NOT_UPPERCASE
+    JB CHECK_LOWERCASE
     CMP AL, 'Z'
-    JG NOT_UPPERCASE
+    JA CHECK_LOWERCASE
+    XOR AL, 20H
+    JMP CONTINUE
 
-   
-    ADD AL, 32
-    JMP COPY_CHAR
-
-NOT_UPPERCASE:
+CHECK_LOWERCASE:
     CMP AL, 'a'
-    JL COPY_CHAR
+    JB CONTINUE
     CMP AL, 'z'
-    JG COPY_CHAR
+    JA CONTINUE
+    XOR AL, 20H
 
-   
-    SUB AL, 32
-
-COPY_CHAR:
+CONTINUE:
     MOV [DI], AL
     INC SI
     INC DI
-    LOOP COMPARE_LOOP
+    LOOP COMPARE
 
-   
-    MOV AH, 09
-    MOV DX, OFFSET string2
-    INT 21h
-
-   
+PRINT_STR2:
+    MOV DX, OFFSET STR2 
+    MOV AH, 09H 
+    INT 21H 
+EXIT:
     MOV AH, 4CH
     INT 21H
-
-MAIN ENDP
+    MAIN ENDP
 END MAIN
